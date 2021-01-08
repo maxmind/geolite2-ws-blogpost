@@ -35,7 +35,7 @@
 
         // You can replace "city" with the method corresponding to the web service that
         // you are using, e.g., "country".
-        $record = $client->city(h($_POST['ip_address']));
+        $record = $client->city($_POST['ip_address']);
     ?>
         <table>
             <tr>

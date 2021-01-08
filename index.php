@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>GeoLite2 WebService Demo</title>
+    <title>GeoLite2 Web Service Demo</title>
 </head>
 
 <body>

@@ -2,7 +2,6 @@
 
 * [Getting Started](#getting-started)
 * [Building Your Docker Container](#building-your-docker-container)
-* [Logging in to Your VM](#logging-in-to-your-vm)
 * [Running the Code](#running-the-code)
 * [Refactoring Your Code](#refactoring-your-code)
   * [Mapping your local volume to the Docker container](#mapping-your-local-volume-to-the-docker-container)
@@ -28,21 +27,13 @@ docker build . -t geolite2-ws-blogpost --build-arg MM_ACCOUNT_ID=YOURACCOUNTID -
 
 This will build your Docker container.
 
-## Logging in to Your VM
-
-To log in to your container, run this command. (Linux users may need to preface
-this command with `sudo`.)
-
-```bash
-docker run -it -p 9595:9595 geolite2-ws-blogpost:latest /bin/bash
-```
-
 ## Running the Code
 
-Once you have logged in, you can run the server:
+To start up your server, run this command. (Linux users may need to preface this
+command with `sudo`.)
 
 ```bash
-php -S 0:9595
+docker run -p 9595:9595 geolite2-ws-blogpost:latest
 ```
 
 Now you can visit http://localhost:9595 on your host machine and make GeoLite2

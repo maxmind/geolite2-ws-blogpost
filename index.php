@@ -13,7 +13,7 @@
             <input type="text" name="ip_address" value="<?= isset($_POST['ip_address']) ? $_POST['ip_address'] : '' ?>">
         </label>
 
-        <input type="submit" value="Perform look up">
+        <input type="submit" value="Perform lookup">
     </form>
 
     <?php

@@ -13,8 +13,8 @@ Vagrant.configure(2) do |config|
     cd /vagrant
     curl -sS https://getcomposer.org/installer | php
     php composer.phar require geoip2/geoip2:~2.0
-    sed -i 's/MM_ACCOUNT_ID/#{ENV['MM_ACCOUNT_ID']}/' index.php
-    sed -i 's/MM_LICENSE_KEY/#{ENV['MM_LICENSE_KEY']}/' index.php
+    sed -i 's/MM_ACCOUNT_ID/#{ENV['MM_ACCOUNT_ID']}/g' index.php
+    sed -i 's/MM_LICENSE_KEY/#{ENV['MM_LICENSE_KEY']}/g' index.php
   SHELL
 
   config.vm.network "forwarded_port", guest: 9595, host: 9595

@@ -15,5 +15,5 @@ RUN apt update && \
     apt install -y unzip && \
     curl -sS https://getcomposer.org/installer | php && \
     php composer.phar require geoip2/geoip2:~2.0 && \
-    sed -i "s/MM_ACCOUNT_ID/${MM_ACCOUNT_ID}/" index.php && \
-    sed -i "s/MM_LICENSE_KEY/${MM_LICENSE_KEY}/" index.php
+    sed -i "s/MM_ACCOUNT_ID/${MM_ACCOUNT_ID}/g" index.php && \
+    sed -i "s/MM_LICENSE_KEY/${MM_LICENSE_KEY}/g" index.php

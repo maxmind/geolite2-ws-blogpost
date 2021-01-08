@@ -1,12 +1,21 @@
 Vagrant.configure(2) do |config|
   config.vm.box = 'ubuntu/focal64'
 
+  config.trigger.before [:up, :reload] do |t|
+    t.ruby do
+      unless ENV.has_key?('MM_ACCOUNT_ID') && ENV['MM_ACCOUNT_ID'] && ENV.has_key?('MM_LICENSE_KEY') && ENV['MM_LICENSE_KEY']
+        raise 'The MM_ACCOUNT_ID and MM_LICENSE_KEY env vars must be defined. Please define them before running "vagrant up".'
+      end
+    end
+    t.ignore = [:destroy, :halt]
+  end
+
   config.vm.provision 'shell', inline: <<-SHELL
-    apt install software-properties-common
+    apt-get install software-properties-common
     add-apt-repository ppa:ondrej/php
 
-    apt update
-    apt install -y php8.0 php8.0-curl unzip
+    apt-get update
+    apt-get install -y php8.0 php8.0-curl unzip
   SHELL
 
   config.vm.provision 'shell', privileged: false, inline: <<-SHELL

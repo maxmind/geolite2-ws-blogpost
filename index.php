@@ -23,7 +23,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ip_address']) && $_POST['ip_address']) {
         // This creates a Client object that can be reused across requests.
-        // To use the GeoIP2 Precision City instead of GeoLite2, you can remove the last parameter.
+        // To use the GeoIP2 Precision City instead of GeoLite2, you can remove the host parameter in the client object.
         // Replace MM_ACCOUNT_ID with your MaxMind Account ID and MM_LICENSE_KEY with your License Key.
         $client = new Client(MM_ACCOUNT_ID, 'MM_LICENSE_KEY', ['en'], ['host' => 'geolite.info']);
 

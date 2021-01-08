@@ -59,8 +59,6 @@ volume. (Linux users may need to preface this command with `sudo`.)
 ```bash
 docker run -it -p 9595:9595 --volume $PWD:/project geolite2-ws-blogpost:latest /bin/bash
 curl -sS https://getcomposer.org/installer | php && \
-    php composer.phar require geoip2/geoip2:~2.0 && \
-    sed -i "s/MM_ACCOUNT_ID/${MM_ACCOUNT_ID}/g" index.php && \
-    sed -i "s/MM_LICENSE_KEY/${MM_LICENSE_KEY}/g" index.php
+    php composer.phar require geoip2/geoip2:~2.0
 php -S 0:9595
 ```

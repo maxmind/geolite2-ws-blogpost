@@ -33,7 +33,7 @@ MaxMind provides an accuracy radius field in the response. The actual location
 of the IP address is likely within the area defined by a circle with its center
 at the coordinates returned and a radius equal to the accuracy radius returned.
 
-![Location as circle](location.jpg "Location as circle") _In this example,
+![Location as circle](location.jpg "Location as circle") _In the example above,
 MaxMind returns the coordinates 42.1293, -72.7522 with an accuracy radius of
 100km. The actual geolocation of the IP address is likely within the
 100km-radius circle shown above._

@@ -1,4 +1,4 @@
-## MaxMind's Free and Paid IP Geolocation Web Services (in PHP)
+## Integrating MaxMind's Free and Paid IP Geolocation Web Services (in PHP)
 
 In December MaxMind released the new
 [GeoLite2 web services](https://dev.maxmind.com/geoip/geoip2/geolite2/), an IP

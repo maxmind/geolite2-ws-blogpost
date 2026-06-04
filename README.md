@@ -1,8 +1,8 @@
 ## Integrating MaxMind's Free and Paid IP Geolocation Web Services (in PHP)
 
 In December MaxMind released the new
-[GeoLite2 web services](https://dev.maxmind.com/geoip/geoip2/geolite2/), an IP
-geolocation API available free of charge.
+[GeoLite2 web services](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data/),
+an IP geolocation API available free of charge.
 
 IP geolocation services provide information about the geographic location of an
 IP address. MaxMind offers two free such web services, GeoLite2 City and
@@ -12,7 +12,7 @@ is fully compatible with GeoIP2, using the same API and integration method,
 making it easy to switch between the free and paid services as your needs
 change. You can compare accuracy of the GeoLite2 and GeoIP2 web services by
 selecting a country on the
-[GeoIP2 City Accuracy](https://www.maxmind.com/en/geoip2-city-accuracy-comparison)
+[GeoIP2 City Accuracy](https://www.maxmind.com/en/geoip-accuracy-comparison)
 page.
 
 In this blog post, we are going to review how to build a simple web page in PHP
@@ -94,9 +94,8 @@ Anycast address, it doesn't make sense to return a precise location, since the
 IP address has locations all over the world). In these cases MaxMind will return
 the subset of the fields for which there is data.
 
-For a full list of the fields returned by each service, see this [side by side
-comparison of GeoLite2 and GeoIP2 data
-points](https://26vddl1ry78464rf7e94z1ee-wpengine.netdna-ssl.com/wp-content/uploads/2020/12/GeoLite2-and-GeoIP2-Precision-Web-Services-Comparison.pdf).
+For a full list of the fields returned by each service, see the
+[GeoIP and GeoLite web services documentation](https://dev.maxmind.com/geoip/docs/web-services/).
 
 ### The Demo in Action
 
@@ -122,15 +121,15 @@ choosing and run the following command:
 git clone https://github.com/maxmind/geolite2-ws-blogpost.git
 ```
 
-Now we'll have the code in the directory `geolite2-ws-blogpost` directly under our
-current directory. Next we change the directory to that.
+Now we'll have the code in the directory `geolite2-ws-blogpost` directly under
+our current directory. Next we change the directory to that.
 
 ```bash
 cd geolite2-ws-blogpost
 ```
 
 Next we install Composer as a
-[PHAR](https://www.php.net/manual/en/intro.phar.php). See the instructions
+[PHAR](https://www.php.net/manual/en/book.phar.php). See the instructions
 [here](https://getcomposer.org/download/).
 
 Once we've installed Composer, we tell it to install the
@@ -141,11 +140,11 @@ php composer.phar require geoip2/geoip2:~2.0
 ```
 
 Now we start the server. This requires a MaxMind account ID and license key. You
-can use an existing, stored, license key or [generate a new one in your account
-portal](https://www.maxmind.com/en/accounts/current/license-key). Be careful
-with this key -- you don't want it getting out in the wild or else anyone can
-use it to use up your MaxMind credit! See
-[this link](https://support.maxmind.com/account-faq/license-keys/how-should-i-store-my-license-key/)
+can use an existing, stored, license key or
+[generate a new one in your account portal](https://www.maxmind.com/en/accounts/current/license-key).
+Be careful with this key -- you don't want it getting out in the wild or else
+anyone can use it to use up your MaxMind credit! See
+[this link](https://support.maxmind.com/knowledge-base/articles/secure-your-maxmind-license-key)
 for instructions on how to safely store your license key -- in particular, don't
 commit the key to any repository. Once you've obtained your account ID and
 license key, replace `YOURACCOUNTID` with the account ID and `YOURLICENSEKEY`
@@ -200,7 +199,7 @@ function, `h`, which escapes HTML control characters, preventing injection (see
 For more information on how to build web forms, you can look up HTML and PHP
 tutorials.
 
-The core of the execution, making a lookup against the API,  comes next:
+The core of the execution, making a lookup against the API, comes next:
 
 ```php
     <?php
@@ -230,15 +229,14 @@ The first line, with the `require_once`, tells Composer to do its thing and make
 the GeoIP2 client available for use in our application.
 
 The next non-blank line, with the `use GeoIp2\WebService\Client;` makes it so
-that we can refer to the GeoIP2 client by referring to `Client` instead of
-its fully-qualified name.
+that we can refer to the GeoIP2 client by referring to `Client` instead of its
+fully-qualified name.
 
 The `if` statement has a condition that says if the request method is POST
 (i.e., if someone has submitted the form), and the IP is set, and it's not
 blank, perform the lookup. You can find more details about the GeoIP2 client API
-on [GitHub](https://github.com/maxmind/GeoIP2-php) and in the current-as-of-this
-writing [API client
-documentation](http://maxmind.github.io/GeoIP2-php/doc/v2.11.0/). Here, we
+on [GitHub](https://github.com/maxmind/GeoIP2-php) and in the
+[API client documentation](https://maxmind.github.io/GeoIP2-php/). Here, we
 instantiate a GeoIP2 client using the host parameter `geolite.info`, which is
 used to specify that we wish to use the GeoLite2 web services, and use that
 client by calling its `city` method to perform the lookup.
@@ -313,11 +311,10 @@ Finally, we end the HTML page and our script is complete:
 ### Upgrading to the GeoIP2 Precision City Web Service
 
 In order to upgrade to the GeoIP2 Precision City web service, we have to
-[purchase credit](https://www.maxmind.com/en/geoip2-precision-city-service) for
-our MaxMind account and be approved for service. Once our account has been
-approved for GeoIP2, we remove the locale and host parameters from the
-constructor, where we've previously defined the host used for the lookups to be
-`geolite.info`.
+[purchase credit](https://www.maxmind.com/en/geoip-api-web-services) for our
+MaxMind account and be approved for service. Once our account has been approved
+for GeoIP2, we remove the locale and host parameters from the constructor, where
+we've previously defined the host used for the lookups to be `geolite.info`.
 
 ```php
         // This creates a Client object that can be reused across requests. To

@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Only github-actions applies here: composer.* and vendor/ are gitignored
+  # (the tutorial has the reader create them), the Dockerfile tracks the
+  # floating php:8 tag, and Dependabot has no mise ecosystem for mise.toml.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '14:00'
+    cooldown:
+      default-days: 7

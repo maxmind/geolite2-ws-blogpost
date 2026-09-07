@@ -56,7 +56,7 @@ Okay, let's get started!
     so [here](https://www.maxmind.com/en/accounts/current/geolite2/eula) (login
     required).
   - If you don't have a MaxMind GeoLite2 account, you can sign up for one
-    [here](https://www.maxmind.com/en/geolite2/signup).
+    [here](https://www.maxmind.com/en/create-account).
 
 ### Using Docker or Vagrant
 

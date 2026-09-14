@@ -195,7 +195,7 @@ The first few lines are as follows:
 There are two things here: One is simply the start of a web page that outputs a
 form that we can submit to perform the lookup, and the other is a reusable
 function, `h`, which escapes HTML control characters, preventing injection (see
-[this link](https://owasp.org/www-community/attacks/xss/) for more information).
+[this link](https://community.owasp.org/attacks/xss/) for more information).
 For more information on how to build web forms, you can look up HTML and PHP
 tutorials.
 
